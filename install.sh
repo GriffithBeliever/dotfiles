@@ -9,6 +9,23 @@ log() {
   echo "[dotfiles] $1"
 }
 
+# Install Oh My Zsh if not present
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "Installing Oh My Zsh..."
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# Install Neovim (>= 0.8) if needed
+if ! command -v nvim >/dev/null || [ "$(nvim --version | head -n1 | awk '{print $2}')" \< "0.8" ]; then
+  echo "Installing Neovim >= 0.8..."
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+  tar -xzf nvim-linux64.tar.gz
+  sudo mv nvim-linux64 /opt/nvim
+  sudo ln -sf /opt/nvim/bin/nvim /usr/local/bin/nvim
+fi
+
+
 link_file() {
   local src="$1"
   local dest="$2"
