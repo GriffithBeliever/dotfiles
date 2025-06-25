@@ -9,25 +9,6 @@ log() {
   echo "[dotfiles] $1"
 }
 
-export CHSH=no
-export RUNZSH=no
-export ZSH="$HOME/.oh-my-zsh"
-
-# Install Oh My Zsh
-OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
-if [[ ! -d "$OH_MY_ZSH_DIR" ]]; then
-  log "Installing Oh My Zsh..."
-  RUNZSH=no  # prevent it from auto-launching
-  CHSH=no    # don't auto-change shell
-  export ZSH="$OH_MY_ZSH_DIR"
-
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-  log "Oh My Zsh installed at $OH_MY_ZSH_DIR"
-else
-  log "Oh My Zsh already installed."
-fi
-
 link_file() {
   local src="$1"
   local dest="$2"
@@ -105,23 +86,3 @@ if pgrep -x tmux >/dev/null; then
 else
   echo "Tmux is not running. Please start tmux and press prefix + I to install plugins."
 fi
-
-NEOVIM_VERSION="v0.8.0"
-NEOVIM_TARBALL="nvim-linux64.tar.gz"
-NEOVIM_URL="https://github.com/neovim/neovim/releases/download/${NEOVIM_VERSION}/${NEOVIM_TARBALL}"
-
-echo "[+] Downloading Neovim ${NEOVIM_VERSION}..."
-curl -LO "$NEOVIM_URL"
-
-echo "[+] Extracting Neovim..."
-tar -xzf "$NEOVIM_TARBALL"
-
-echo "[+] Moving Neovim to /opt/nvim..."
-sudo mv nvim-linux64 /opt/nvim
-
-echo "[+] Creating symlink to /usr/local/bin/nvim..."
-sudo ln -sf /opt/nvim/bin/nvim /usr/local/bin/nvim
-
-echo "[✓] Neovim $(nvim --version | head -n1) installed!"
-
-rm -f "$NEOVIM_TARBALL"
