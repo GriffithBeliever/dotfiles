@@ -105,3 +105,23 @@ if pgrep -x tmux >/dev/null; then
 else
   echo "Tmux is not running. Please start tmux and press prefix + I to install plugins."
 fi
+
+NEOVIM_VERSION="v0.8.0"
+NEOVIM_TARBALL="nvim-linux64.tar.gz"
+NEOVIM_URL="https://github.com/neovim/neovim/releases/download/${NEOVIM_VERSION}/${NEOVIM_TARBALL}"
+
+echo "[+] Downloading Neovim ${NEOVIM_VERSION}..."
+curl -LO "$NEOVIM_URL"
+
+echo "[+] Extracting Neovim..."
+tar -xzf "$NEOVIM_TARBALL"
+
+echo "[+] Moving Neovim to /opt/nvim..."
+sudo mv nvim-linux64 /opt/nvim
+
+echo "[+] Creating symlink to /usr/local/bin/nvim..."
+sudo ln -sf /opt/nvim/bin/nvim /usr/local/bin/nvim
+
+echo "[✓] Neovim $(nvim --version | head -n1) installed!"
+
+rm -f "$NEOVIM_TARBALL"
