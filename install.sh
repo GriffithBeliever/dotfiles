@@ -10,6 +10,7 @@ log() {
 }
 
 export CHSH=no
+export RUNZSH=no
 export ZSH="$HOME/.oh-my-zsh"
 
 # Install Oh My Zsh
