@@ -9,6 +9,9 @@ log() {
   echo "[dotfiles] $1"
 }
 
+export CHSH=no
+export ZSH="$HOME/.oh-my-zsh"
+
 # Install Oh My Zsh
 OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
 if [[ ! -d "$OH_MY_ZSH_DIR" ]]; then
