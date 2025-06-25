@@ -9,6 +9,21 @@ log() {
   echo "[dotfiles] $1"
 }
 
+# Install Oh My Zsh
+OH_MY_ZSH_DIR="$HOME/.oh-my-zsh"
+if [[ ! -d "$OH_MY_ZSH_DIR" ]]; then
+  log "Installing Oh My Zsh..."
+  RUNZSH=no  # prevent it from auto-launching
+  CHSH=no    # don't auto-change shell
+  export ZSH="$OH_MY_ZSH_DIR"
+
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+  log "Oh My Zsh installed at $OH_MY_ZSH_DIR"
+else
+  log "Oh My Zsh already installed."
+fi
+
 link_file() {
   local src="$1"
   local dest="$2"
