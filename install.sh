@@ -31,6 +31,7 @@ install_symlinks() {
   # Link top-level dotfiles
   link_file "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
   link_file "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
+  link_file "$DOTFILES_DIR/.config/ghostty" "$HOME/.config/ghostty"
   # link_file "$DOTFILES_DIR/.config/nvim" "$HOME/.config/nvim"
 }
 
