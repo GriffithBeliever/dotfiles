@@ -1,6 +1,6 @@
 # ~/.config/ghostty/config
 window-vsync = true
-background-opacity = 0.8
+background-opacity = 1
 window-decoration = none
 auto-update-channel = tip
 
@@ -8,9 +8,9 @@ auto-update-channel = tip
 # custom-shader=~/dotfiles/.config/ghostty/theme/matrix-hallway.glsl
 # custom-shader=~/dotfiles/.config/ghostty/theme/underwater.glsl
 # custom-shader=~/dotfiles/.config/ghostty/theme/water.glsl
-# custom-shader=~/dotfiles/.config/ghostty/theme/better-crt.glsl
+custom-shader=~/dotfiles/.config/ghostty/theme/better-crt.glsl
 # custom-shader=~/dotfiles/.config/ghostty/theme/retro-terminal.glsl
-# custom-shader=theme/ingame-crt.glsl
+custom-shader=theme/ingame-crt.glsl
 custom-shader=shaders/cursor-smear.glsl
 custom-shader=theme/bloom025.glsl
 # custom-shader=shaders/cursor-blaze.glsl
