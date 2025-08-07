@@ -5,6 +5,18 @@ return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   opts = function(_, opts)
+    opts = opts or {}
+
+    -- Initialize sections if missing
+    opts.sections = opts.sections or {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = {},
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {},
+    }
+
     table.insert(opts.sections.lualine_x, {
       function()
         return status.get_dot() .. " " .. (status.connected and "connected to remote" or "disconnected")
@@ -21,14 +33,3 @@ return {
   end,
 }
 
--- -- or you can return new options to override all the defaults
--- {
---   "nvim-lualine/lualine.nvim",
---   event = "VeryLazy",
---   opts = function()
---     return {
---       --[[add your custom lualine config here]]
---     }
---   end,
--- },
---

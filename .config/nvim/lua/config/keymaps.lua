@@ -1,7 +1,12 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", { desc = "Telescope Go to Definition" })
+vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open parent directory" })
+
+-- Diagnostics for current buffer in location list
+vim.keymap.set('n', '<leader>ld', vim.diagnostic.setloclist, { desc = "Show diagnostics in location list" })
+
+-- Diagnostics for all buffers in quickfix list
+vim.keymap.set('n', '<leader>lq', vim.diagnostic.setqflist, { desc = "Show diagnostics in quickfix list" })
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
@@ -43,3 +48,11 @@ end, opts) -- d = debug, r = repl
 map("n", "<leader>du", function()
   require("dapui").toggle()
 end, opts) -- d = debug, u = UI
+
+vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { desc = "Close tab" })
+vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = 'Find files' })
+
+-- Yank to system clipboard
+vim.keymap.set({ "n", "v" }, "y", '"+y')
+vim.keymap.set("n", "Y", '"+Y') -- for line yanking
+
