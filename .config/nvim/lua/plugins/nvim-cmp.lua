@@ -29,7 +29,7 @@ return {
 					{
 						name = "nvim_lsp",
 						entry_filter = function (entry)
-							-- Filter out snippets from LSP to avoidduplicates
+							-- Filter out snippets from LSP to avoid  duplicates 
 							return entry:get_kind() ~= cmp.lsp.CompletionItemKind.Snippet
 						end,
 

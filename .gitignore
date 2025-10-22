@@ -7,3 +7,4 @@ foo.*
 *.log
 data
 .zshrc_private
+.config/nvm/

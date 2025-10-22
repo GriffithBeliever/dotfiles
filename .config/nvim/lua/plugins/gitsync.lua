@@ -1,5 +1,5 @@
 return {
-  "local/gitsync",
-  dir = "~/projects/nvim-git-sync",
-  lazy = false,
+  -- "local/gitsync",
+  -- dir = "~/projects/nvim-git-sync",
+  -- lazy = false,
 }

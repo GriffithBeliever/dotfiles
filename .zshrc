@@ -6,7 +6,9 @@ export KITTY_CONFIG_DIRECTORY="$HOME/dotfiles/.config/kitty"
 export XDG_CONFIG_HOME="$HOME/dotfiles/.config"
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PYENV_ROOT/bin:$PATH"
+export PATH="/Users/cosmo/.local/share/solana/install/active_release/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 
@@ -106,5 +108,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+set -o vi
+
 [[ -s "~/.gvm/scripts/gvm" ]] && source "~/.gvm/scripts/gvm"
 source ~/dotfiles/.zshrc_private
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+
+export NVM_DIR="$HOME/dotfiles/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
