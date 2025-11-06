@@ -17,6 +17,10 @@ return {
       lualine_z = {},
     }
 
+    opts.winbar = {
+	    lualine_c = {'filename'},
+    }
+
     table.insert(opts.sections.lualine_x, {
       -- function()
       --   return status.get_dot() .. " " .. (status.connected and "connected to remote" or "disconnected")
